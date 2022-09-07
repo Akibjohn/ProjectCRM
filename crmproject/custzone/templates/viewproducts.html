@@ -1,0 +1,24 @@
+{% extends "custparent.html" %}
+{% block body %}
+<h1 style=" text-decoration: underline; color: black;text-align:center;">
+    View Products
+</h1>
+<table border="1" style="width:80%;margin:0 auto;">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Unit Price</th>
+        <th>Mfg Date</th>
+        <th>Exp Date</th>
+    </tr>
+    {% for p in pr %}
+        <tr>
+            <td>{{p.productid}}</td>
+            <td>{{p.productname}}</td>
+            <td>{{p.unitprice}}</td>
+            <td>{{p.mfgdate}}</td>
+            <td>{{p.expdate}}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock body %}

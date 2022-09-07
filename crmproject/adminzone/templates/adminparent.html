@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to admin zone</title>
+<style>
+#outer
+{
+width:1000px;
+height:auto;
+min-height:1000px;
+margin:0 auto;
+}
+#header
+{
+width:1000px;
+height:150px;
+}
+#logo
+{
+width:150px;
+height:150px;
+/*background-color:pink;*/
+background-image:url("{% static 'images/logo.jpg' %}");
+float:left;
+}
+#title
+{
+width:850px;
+height:150px;
+background-color:navy;
+float:right;
+color:white;
+font-size:60px;
+text-align:center;
+line-height:150px;
+}
+#menu
+{
+width:1000px;
+height:50px;
+background-color:white;
+margin-top:5px;
+border:1px solid white;
+}
+#menu ul
+{
+list-style-type:none;
+}
+#menu ul li
+{
+display:inline;
+}
+#menu ul li a
+{
+font-size:20px;
+color:black;
+padding-left:20px;
+text-decoration:none;
+}
+#menu ul li a:hover
+{
+color:red;
+}
+#main
+{
+width:1000px;
+height:auto;
+min-height:700px;
+background-color:white;
+margin-top:5px;
+border:1px solid white;
+}
+#footer
+{
+width:1000px;
+height:85px;
+margin-top:5px;
+}
+#lfooter
+{
+width:500px;
+height:85px;
+background-color:black;
+color:white;
+text-align:center;
+font-size:40px;
+float:left;
+line-height:85px;
+}
+#rfooter
+{
+width:500px;
+height:85px;
+background-color:navy;
+color:white;
+text-align:center;
+font-size:40px;
+float:right;
+line-height:85px;
+}
+#body{
+        background: url("{% static 'images/new.png'%}");
+        
+       }
+</style>
+</head>
+<body id="body" bgcolor="grey">
+    <div id="outer">
+        <div id="header">
+            <div id="logo">
+                <!--<img src="{% static 'images/logo.jpg'%}"/>-->
+            </div>
+            <div id="title" style="color: rgb(39, 31, 31); background-color: rgba(201, 156, 214, 0.221);">
+                Welcome to Admin zone
+            </div>
+        </div>
+        <div id="menu" style="background-color: rgba(240, 248, 255, 0);">
+            <ul>
+                <li><a href="{% url 'adminzone:adminhome' %}">Home</a></li>
+                <li><a href="{% url 'adminzone:product'%}">Products</a></li>
+                <li><a href="{% url 'adminzone:customer'%}">Customers</a></li>
+                <li><a href="{% url 'adminzone:enquiry'%}">Enquiry</a></li>
+                <li><a href="{% url 'adminzone:afeedback'%}">Feedback</a></li>
+                <li><a href="{% url 'adminzone:acomplain'%}">Complain</a></li>
+                <li><a href="{% url 'adminzone:achangepassword'%}">Change Password</a></li>
+                <li><a href="{% url 'adminzone:logout'%}">Logout</a></li>
+            </ul>
+        </div>
+        <div id="main" style="background-color: rgba(255, 255, 255, 0.316);">
+            {% block body %}
+            {% endblock body%}
+        </div>
+        <div id="footer">
+            <div id="lfooter" style="color: white; background-color: rgba(201, 156, 214, 0);">
+               <b>Copyright &copy; to MARC Lab.</b>
+            </div>
+            <div id="rfooter" style="color: rgb(225, 171, 238); background-color: rgba(201, 156, 214, 0);">
+                <b><i>Developed By:Mohd Aqib</i></b>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>CRM For MARC Lab</title>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet" type="text/css"/>
+    <style>
+       #body{
+        background: url("{% static 'images/new.png'%}");
+        
+       }
+    </style>
+    <script>
+        var imgnames=["marc1.jpg","marc2.jpg","marc3.png","marc4.jpg"];
+        var i=0;
+        baseUrl="{% static 'images/'%}";
+        function moveSlider()
+        {
+           if(i==imgnames.length)
+           {
+            i=0;
+           }
+           document.getElementById("slide").src=baseUrl+imgnames[i];
+           i++;
+           window.setTimeout("moveSlider()",2000);
+        }
+    </script>
+    
+</head>
+<body id="body" bgcolor="red" onload="moveSlider()">
+    
+    <div id="outer">
+        <div id="header">
+            <div id="logo">
+                <img src="{% static 'images/logo.jpg'%}"/>
+            </div>
+            <div id="title" style="color: rgb(39, 31, 31); background-color: rgba(201, 156, 214, 0.221);">
+                Customer Relationship Management
+            </div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'registration' %}">Registration</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'adminlogin' %}">Admin Login</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+            </ul>
+        </div>
+        <div id="slider">
+            <img id="slide" width="1000" height="250"/>
+        </div>
+        <div id="main">
+            
+            <div id="left" style="background-color: rgba(211, 150, 228, 0.285);">
+                <marquee direction="up" height="600" onmouseover="stop()" onmouseout="start()">
+                {% for n in nf %}
+                <i><h1 style="color: rgb(247, 240, 240); text-align: center;">{{n.notificationtext}}</h1></i>
+                {{n.notificationdate}}
+                {% endfor %}
+                </marquee>
+            </div>
+            <div style=" overflow: visible; background-color: rgba(255, 255, 255, 0.316);" id="right">
+                {% block body %}
+                {% endblock body %}
+            </div>
+            
+        </div>
+        <div id="footer">
+            <div id="lfooter" style="color: white; background-color: rgba(201, 156, 214, 0);">
+               <b> Developed By:</b>
+            </div>
+            <div id="rfooter"  style="color: rgb(225, 171, 238); background-color: rgba(201, 156, 214, 0);">
+                <b>Mo Aqib & Kartikey Gupta</b> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
